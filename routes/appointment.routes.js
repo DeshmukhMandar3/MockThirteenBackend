@@ -39,7 +39,7 @@ aptRouter.get("/getapt", async (req, res, next) => {
   try {
     let data = await aptModel
       .find(search)
-      .skip(1 * (req.body.page - 1))
+      .skip(4 * (req.body.page - 1))
       .limit(4);
     res.send(data);
   } catch (err) {
