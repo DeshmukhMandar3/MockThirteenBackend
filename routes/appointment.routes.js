@@ -29,11 +29,11 @@ aptRouter.post("/bookapt", async (req, res, next) => {
 aptRouter.get("/getapt", async (req, res, next) => {
   let search = {};
 
-  if (req.query && req.query.name) {
-    search.name = req.query.name;
+  if (req.body && req.body.name) {
+    search.name = req.body.name;
   }
-  if (req.query && req.query.filter) {
-    search.sp = req.query.filter;
+  if (req.body && req.body.filter) {
+    search.sp = req.body.filter;
   }
   console.log(search);
   try {
