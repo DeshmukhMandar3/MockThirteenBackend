@@ -28,17 +28,17 @@ aptRouter.post("/bookapt", async (req, res, next) => {
 
 aptRouter.get("/getapt", async (req, res, next) => {
   let search = {};
-  let filter = {};
+
   if (req.body && req.body.name) {
-    search = { name: req.body.name };
+    search.name = req.body.name;
   }
   if (req.body && req.body.filter) {
-    filter = { sp: req.body.filter };
+    search.sp = req.body.filter;
   }
-
+  console.log(search);
   try {
     let data = await aptModel
-      .find(search, filter)
+      .find(search)
       .skip(1 * (req.body.page - 1))
       .limit(4);
     res.send(data);
